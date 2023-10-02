@@ -58,8 +58,42 @@ class HomeScreenState extends State<HomeScreen> {
                       courseHeadline: 'Recommended',
                       courseImage: 'assets/images/1.png',
                       courseTitle: 'UI/UX DESIGNER\nBEGINNER');
-                }, 
+                },
               )),
+          const SizedBox(
+            height: 34,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Free online class',
+                style: GoogleFonts.roboto(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'From over 80 class',
+                style: GoogleFonts.roboto(
+                    fontSize: 14,
+                    color: const Color(0xFF9C9A9A),
+                    fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+          ListView.builder(
+              itemCount: 5,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return const VerticalList(
+                    courseDuration: '8 hours',
+                    courseImage: 'assets/images/29.png',
+                    courseRating: 3.0,
+                    courseTitle: 'Flutter Developer');
+              }
+            )
         ],
       )),
     );
