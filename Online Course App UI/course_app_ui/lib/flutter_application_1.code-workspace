@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "../../../../flutter_pinoyfreecoder/flutter_application_2/flutter_application_1"
+		},
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../flutter_pinoyfreecoder"
+		},
+		{
+			"path": "../../../../appsdev"
+		},
+		{
+			"path": "../../../../flutter_application_1"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "appsdev"
+	}
+}
