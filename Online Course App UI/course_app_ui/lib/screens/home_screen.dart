@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widget/widget.dart';
+import '../widget/horizontal_list.dart';
+import '../widget/vertical_list.dart';
+import 'course_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -34,12 +35,20 @@ class HomeScreenState extends State<HomeScreen> {
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
-              Text(
-                'Master Class',
-                style: GoogleFonts.roboto(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CourseDetailScreen()));
+                },
+                child: Text(
+                  'Master Class',
+                  style: GoogleFonts.roboto(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
             ],
           ),
@@ -92,8 +101,7 @@ class HomeScreenState extends State<HomeScreen> {
                     courseImage: 'assets/images/29.png',
                     courseRating: 3.0,
                     courseTitle: 'Flutter Developer');
-              }
-            )
+              })
         ],
       )),
     );
