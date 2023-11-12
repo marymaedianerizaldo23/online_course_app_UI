@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travel_news_app/app_styles.dart';
+// import 'package:travel_news_app/news_details_screen.dart';
+// import 'package:travel_news_app/profile_screen.dart';
 import 'package:travel_news_app/size_config.dart';
-import 'package:flutter/widgets.dart';
+
 
 void main() => runApp(const MyApp());
 
@@ -14,14 +16,54 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int _selectedIndex = 0;
+
+  void onItemTapped(int index){
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           backgroundColor: klighterWhite,
-          body: HomeScreen(),
-        ));
+          body: const HomeScreen(),
+          bottomNavigationBar: BottomNavigationBar(
+            elevation: 0,
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: kWhite,
+            items:[
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 0 
+                ? SvgPicture.asset('assets/home_selected_icon.svg')
+                : SvgPicture.asset('assets/home_unselected_icon.svg'),
+              label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 1 
+                ? SvgPicture.asset('assets/bookmark_selected_icon.svg')
+                : SvgPicture.asset('assets/bookmark_unselected_icon.svg'),
+              label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 2 
+                ? SvgPicture.asset('assets/notification_selected_icon.svg')
+                : SvgPicture.asset('assets/notification_unselected_icon.svg'),
+              label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 3 
+                ? SvgPicture.asset('assets/profile_selected_icon.svg')
+                : SvgPicture.asset('assets/profile_unselected_icon.svg'),
+              label: '',
+              ),
+            ],
+          ),
+        )
+      );
   }
 }
 
@@ -31,7 +73,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return SafeArea(
+    return Expanded(
       child: ListView(
         padding: const EdgeInsets.symmetric(
           horizontal: 30,
@@ -232,7 +274,7 @@ class HomeScreen extends StatelessWidget {
                                           fontSize: 9)
                                         )
                                     ],
-                                  )
+                                  ),
                                 ],
                               ),
                               Container(
@@ -298,6 +340,62 @@ class HomeScreen extends StatelessWidget {
                             offset: const Offset(0.0, 3.0),
                             blurRadius: 24.0,
                             spreadRadius: 0.0
+                          )
+                        ]
+                      ),
+                      child: Row(
+                        children: [
+                           Container(
+                            width: 70,
+                            height: 70,
+                            padding: const EdgeInsets.all(26),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(kBorderRadius),
+                              image: const DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage('https://lp-cms-production.imgix.net/features/2019/05/Palawan-travel-936549056388.jpg?auto=format&w=730&h=630&fit=crop&q=75')
+                              )
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/play_icon.svg'
+                            ),
+                           ),
+                           const SizedBox(
+                            width: 12
+                           ),
+                           Flexible(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Top trending island is 2022',
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: kPoppinsBold.copyWith(
+                                    fontSize: 12
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 12,
+                                ),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/eye_icon.svg'
+                                    ),
+                                    const SizedBox(
+                                      width: 4,
+                                    ),
+                                    Text(
+                                      '40,999',
+                                      style: kPoppinsMedium.copyWith(
+                                        color: kGrey,
+                                        fontSize: 12
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
+                            )
                           )
                         ]
                       ),
